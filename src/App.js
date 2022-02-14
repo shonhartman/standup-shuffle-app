@@ -54,7 +54,6 @@ class App extends Component {
   };
 
   shuffleDevs = () => {
-
     this.setState(prevState => {
       let currentIndex = prevState.developers.length,  randomIndex;
 

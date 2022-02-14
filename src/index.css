@@ -132,11 +132,6 @@ svg {
     visibility: visible;
   }
 
-  .developer-name,
-  .counter-score {
-    color: #2F2366;
-  }
-
   .developer-name {
     flex-grow: 1;
     line-height: 3.5em;

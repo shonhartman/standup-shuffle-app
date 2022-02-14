@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Developer({ name, removeDeveloper, id, index }) {
+export default function Developer({ name, removeDeveloper, id }) {
   return (
     <div className='developer'>
       <span className='developer-name'>

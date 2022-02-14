@@ -1,10 +1,16 @@
 import React from "react";
-import Stats from "./Stats";
 
 export default function Header ({ title, developers, shuffleDevs }) {
   return (
     <header>
-      <Stats developers={developers} />
+      <table className="stats">
+        <tbody>
+          <tr>
+            <td>Developers:</td>
+            <td>{ developers.length }</td>
+          </tr>
+        </tbody>
+      </table>
       <h1>{title}</h1>
       <button className='shuffle' onClick={shuffleDevs}>Shuffle Devs</button>
     </header>
