@@ -1,39 +1,32 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class AddDeveloperForm extends Component {
+export default function AddDeveloperForm({ addDeveloper }) {
 
-  state = {
-    value: ''
-  };
+  const [value, setValue] = useState(() => {
+    return JSON.parse(localStorage.getItem('CURRENT_DEVS')) || [];
+  });
 
-  handleValueChange = (e) => {
-    this.setState({
+  const handleValueChange = (e) => {
+    setValue({
       value: e.target.value
     })
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addDeveloper(this.state.value);
-    this.setState({
-      value: ''
-    })
+    addDeveloper(this.state.value);
+    setValue('');
   }
 
-  render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input 
           type="text" 
-          value={this.state.value}
-          onChange={this.handleValueChange}
+          value={value}
+          onChange={handleValueChange}
           placeholder="Enter a developer's name" 
         />
         <input type="submit" value="Add Developer" />
       </form>
     )
-  }
 };
-
-export default AddDeveloperForm;
-

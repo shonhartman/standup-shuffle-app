@@ -1,18 +1,14 @@
-import React from "react";
+import React from 'react';
 
 export default function Header ({ title, developers, shuffleDevs }) {
   return (
     <header>
-      <table className="stats">
-        <tbody>
-          <tr>
-            <td>Developers:</td>
-            <td>{ developers.length }</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="stats">
+        <div>Developers:</div>
+        <div>{ developers.length }</div>
+      </div>
       <h1>{title}</h1>
-      <button className='shuffle' onClick={shuffleDevs}>Shuffle Devs</button>
+      <button className="shuffle" onClick={shuffleDevs}>Shuffle Devs</button>
     </header>
   )
 }
