@@ -2,9 +2,7 @@ import React, { useState } from "react";
 
 export default function AddDeveloperForm({ addDeveloper }) {
 
-  const [value, setValue] = useState(() => {
-    return JSON.parse(localStorage.getItem('CURRENT_DEVS')) || [];
-  });
+  const [value, setValue] = useState();
 
   const handleValueChange = (e) => {
     setValue({
@@ -14,7 +12,7 @@ export default function AddDeveloperForm({ addDeveloper }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addDeveloper(this.state.value);
+    addDeveloper(value);
     setValue('');
   }
 
