@@ -61,7 +61,7 @@ function App() {
       {/* DEVELOPER LIST */}
       {developers.map( (developer, index) => 
         <Developer 
-          key={developer.name} 
+          key={developer.id} 
           id={developer.id}
           name={developer.name} 
           index={index}
