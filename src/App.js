@@ -6,39 +6,33 @@ import AddDeveloperForm from './components/AddDeveloperForm';
 
 function App() {
 
-  // TODO : get initial state from localStorage
-  const [developers, setDevelopers] = useState([
-    {
-      name: "Jonathan",
-      id: 1
-    },
-    {
-      name: "Jereme",
-      id: 2
-    },
-    {
-      name: "JPG",
-      id: 3
-    },
-    {
-      name: "Reehana",
-      id: 4
-    }
-  ]);
+  // GET INITIAL STATE FROM LOCALSTORAGE IF AVAILABLE
+  const [developers, setDevelopers] = useState(() => {
+    return JSON.parse(localStorage.getItem('CURRENT_DEVS')) || [];
+  });
 
-  // TODO: Persist to localStorage with a similar function to below
-  // localStorage.setItem('CURRENT_DEVS', JSON.stringify(this.state.developers));
-  function useStickyState(defaultValue, key) {
-    const [value, setValue] = useState(() => {
-      const stickyValue = window.localStorage.getItem(key);
-      return stickyValue !== null
-        ? JSON.parse(stickyValue)
-        : defaultValue;
-    });
-    useEffect(() => {
-      window.localStorage.setItem(key, JSON.stringify(value));
-    }, [key, value]);
-    return [value, setValue];
+  // SET LOCAL STORAGE ON STATE CHANGE
+  useEffect(() => {
+    localStorage.setItem('CURRENT_DEVS', JSON.stringify(developers));
+  }, [developers]);
+
+  // SHUFFLE FUNCTION
+  function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+
+      // While there are elements to shuffle...
+      while (currentIndex !== 0) {
+      
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        
+        // Swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+
+      return array;
   }
 
   const handleRemoveDeveloper = (id) => {
@@ -52,30 +46,9 @@ function App() {
     }]);
   }
 
-  function shuffle(array) {
-    let currentIndex = array.length,  randomIndex;
-
-      // While there remain elements to shuffle...
-      while (currentIndex !== 0) {
-      
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        
-        // And swap it with the current element.
-        [array[currentIndex], array[randomIndex]] = [
-          array[randomIndex], array[currentIndex]];
-      }
-
-      return array;
-  }
-
   const shuffleDevs = () => {
-
     const shuffledDevs = [...developers];
-
     setDevelopers(shuffle(shuffledDevs));
-
   };
 
   return (
