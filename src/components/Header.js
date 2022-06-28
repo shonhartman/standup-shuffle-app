@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header ({ title, developers, shuffleDevs }) {
   return (
-    <header>
+    <header className='uppercase rounded-t-md'>
       <div className="stats">
         <div>Developers:</div>
         <div>{ developers.length }</div>
