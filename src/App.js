@@ -84,7 +84,7 @@ function App() {
   };
 
   return (
-    <div className="board">
+    <div className="board bg-white">
       <Header
         title="Standup Shuffle"
         developers={developers}
