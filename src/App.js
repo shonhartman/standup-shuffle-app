@@ -53,34 +53,13 @@ function App() {
   };
 
   const shuffleDevs = () => {
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 25)
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 50)
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 75)
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 100)
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 150)
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 250)
-    setTimeout(() => {
-      const shuffledDevs = [...developers];
-      setDevelopers(shuffle(shuffledDevs));
-    }, 300)
+    const timing = [25, 50, 75, 100, 150, 250, 300];
+    timing.map(time => {
+      return setTimeout(() => {
+        const shuffledDevs = [...developers];
+        setDevelopers(shuffle(shuffledDevs));
+      }, time)
+    })
   };
 
   return (
