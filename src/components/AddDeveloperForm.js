@@ -15,7 +15,7 @@ export default function AddDeveloperForm({ addDeveloper }) {
   }
 
     return (
-      <form onSubmit={handleSubmit}>
+      <form className="rounded-b-md" onSubmit={handleSubmit}>
         <input 
           type="text" 
           value={value}
