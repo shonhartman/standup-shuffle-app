@@ -20,9 +20,9 @@ export default function AddDeveloperForm({ addDeveloper }) {
           type="text" 
           value={value}
           onChange={handleValueChange}
-          placeholder="Enter a developer's name" 
+          placeholder="Enter something" 
         />
-        <input type="submit" value="Add Developer" />
+        <input type="submit" value="Add One" />
       </form>
     )
 };

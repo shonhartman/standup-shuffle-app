@@ -87,7 +87,7 @@ button.shuffle {
   display: block;
   font-size: 0.6em;
   margin: 15px 15px 15px 0;
-  padding: 10px;
+  padding: 15px 30px;
   background-color: #44338d;
   border-radius: 5px;
   border: none;
@@ -100,6 +100,11 @@ button.shuffle {
 }
 
 /* ICONS */
+
+.shuffle-icon {
+  height: 32px;
+  width: 32px;
+}
 
 svg {
   width: 28px;
@@ -116,7 +121,7 @@ svg {
 
 /* COMPONENT STYLES -------------------- */
 
-.board { @apply w-1/2 container mx-auto shadow-xl mt-10 uppercase}
+.board { @apply md:w-1/2 container mx-auto shadow-xl mt-10 uppercase max-w-[95%] md:max-w-[50%] }
 
 .developer {
   display: flex;

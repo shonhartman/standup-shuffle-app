@@ -7,14 +7,14 @@ import AddDeveloperForm from "./components/AddDeveloperForm";
 
 function App() {
   // GET INITIAL STATE FROM LOCALSTORAGE IF AVAILABLE
-  const [developers, setDevelopers] = useState(() => {
-    return JSON.parse(localStorage.getItem("CURRENT_DEVS")) || [];
+  const [items, setItems] = useState(() => {
+    return JSON.parse(localStorage.getItem("CURRENT_ITEMS")) || [];
   });
 
   // SET LOCAL STORAGE ON STATE CHANGE
   useEffect(() => {
-    localStorage.setItem("CURRENT_DEVS", JSON.stringify(developers));
-  }, [developers]);
+    localStorage.setItem("CURRENT_ITEMS", JSON.stringify(items));
+  }, [items]);
 
   // SHUFFLE FUNCTION
   function shuffle(array) {
@@ -39,12 +39,12 @@ function App() {
   }
 
   const handleRemoveDeveloper = (id) => {
-    setDevelopers(developers.filter((d) => d.id !== id));
+    setItems(items.filter((d) => d.id !== id));
   };
 
   const handleAddDeveloper = (name) => {
-    setDevelopers([
-      ...developers,
+    setItems([
+      ...items,
       {
         name,
         id: Date.now(),
@@ -56,8 +56,8 @@ function App() {
     const timing = [25, 50, 75, 100, 150, 250, 300];
     timing.map(time => {
       return setTimeout(() => {
-        const shuffledDevs = [...developers];
-        setDevelopers(shuffle(shuffledDevs));
+        const shuffledDevs = [...items];
+        setItems(shuffle(shuffledDevs));
       }, time)
     })
   };
@@ -65,12 +65,12 @@ function App() {
   return (
     <div className="board bg-white">
       <Header
-        title="Standup Shuffle"
-        developers={developers}
+        title="Shuffle"
+        items={items}
         shuffleDevs={shuffleDevs}
       />
       {/* DEVELOPER LIST */}
-        {developers.map((developer, index) => (
+        {items.map((developer, index) => (
           <Developer
             key={developer.id}
             id={developer.id}
